@@ -1,5 +1,6 @@
 import React from 'react';
 import Feed from './Feed.jsx';
+import Accordion from './Accordion.js'
 
 function App() {
   const tempToDos = [
@@ -11,7 +12,12 @@ function App() {
   return (
     <div>
       <h1>Destiny 2 Do</h1>
-      <Feed list={tempToDos}/>
+      <Accordion
+        title={"test of categories with feeds"}
+        content={
+          <Feed list={tempToDos}/>
+        }
+      />
     </div>
   )
 }
