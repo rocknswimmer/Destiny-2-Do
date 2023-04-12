@@ -14,6 +14,7 @@ CREATE TABLE missions (
   complete BOOLEAN NOT NULL DEFAULT false,
   category VARCHAR(60) NOT NULL DEFAULT NULL,
   note TEXT DEFAULT NULL,
+  -- need a proirity column once I see if theres a convenient way
   user_id INTEGER NOT NULL DEFAULT NULL REFERENCES guardians(id)
 );
 
