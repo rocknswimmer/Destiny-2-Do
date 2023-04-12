@@ -1,9 +1,9 @@
 -- will add schema and seed here
 
 DROP TABLE IF EXISTS missions;
-DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS guardians; --already have a deployed users table
 
-CREATE TABLE users (
+CREATE TABLE guardians (
   id SERIAL,
   user_name VARCHAR(20) NOT NULL DEFAULT NULL,
   PRIMARY KEY (id)
@@ -14,10 +14,10 @@ CREATE TABLE missions (
   complete BOOLEAN NOT NULL DEFAULT false,
   category VARCHAR(60) NOT NULL DEFAULT NULL,
   note TEXT DEFAULT NULL,
-  user INTEGER NOT NULL DEFAULT NULL REFERENCES users(id)
+  user INTEGER NOT NULL DEFAULT NULL REFERENCES guardians(id)
 );
 
-insert into users (user_name) values ('andyTest') returning *;
+insert into guardians (user_name) values ('andyTest') returning *;
 
 insert into missions (mission, category, user) values ('Vex Calibur/not mission title', 'exotic', 1);
 
