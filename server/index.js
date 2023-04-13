@@ -52,14 +52,16 @@ app.put('/complete/:id', (req, res) => {
   })
 })
 
-app.put('', (req, res) => {
+app.put('/note/:id', (req, res) => {
   const mission = req.params.id;
   const {note} = req.body;
-  pool.query('', [], (err, data) => {
+  // console.log('testing', note)
+  // res.send('testing put')
+  pool.query('update missions set note = $1 where id = $2', [note, mission], (err, data) => {
     if(err) {
-      console.log('')
+      console.log('error updating mission note')
     }
-    res.send('')
+    res.send('Mission note updated')
   })
 })
 
