@@ -10,6 +10,7 @@ CREATE TABLE guardians (
 );
 
 CREATE TABLE missions (
+  id SERIAL,
   mission VARCHAR(60) NOT NULL DEFAULT NULL,
   complete BOOLEAN NOT NULL DEFAULT false,
   category VARCHAR(60) NOT NULL DEFAULT NULL,

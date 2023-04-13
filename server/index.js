@@ -29,20 +29,39 @@ app.get('/missions/:id', (req, res) => {
   })
 })
 
-app.post('/newMission/:id', (req, res) => {
+app.post('/newMission/:id/', (req, res) => {
   const user = req.params.id;
   const {mission, category} = req.body;
   // console.log( mission, category, user, 'data before this string')
   // res.send("testing")
   pool.query('insert into missions (mission, category, user_id) values ($1, $2, $3)', [mission, category, user], (err, data) => {
     if(err) {
-      console.log('error creating mission', err)
+      console.log('error creating mission')
     }
     res.send('mission created')
   })
 })
 
+app.put('/complete/:id', (req, res) => {
+  const mission = req.params.id;
+  pool.query('update missions set complete = true where id = $1', [mission], (err, data) => {
+    if(err) {
+      console.log('error marking mission complete')
+    }
+    res.send('Mission Complete!')
+  })
+})
 
+app.put('', (req, res) => {
+  const mission = req.params.id;
+  const {note} = req.body;
+  pool.query('', [], (err, data) => {
+    if(err) {
+      console.log('')
+    }
+    res.send('')
+  })
+})
 
 app.listen(3009);
 console.log('Listening on port 3009');
