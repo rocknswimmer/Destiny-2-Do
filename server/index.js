@@ -21,13 +21,17 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('/missions/:id', (req, res) => {
   const user = req.params.id;
-  pool.query('select * from missions where user_id = $1 and category = $2', [user, 'other'], (err, data) => {
+  pool.query('select category, json_agg(row_to_json(missions)) toDos from missions where user_id = $1 group by category', [user], (err, data) => {
     if(err) {
       console.log('error retrieving missions')
     }
     res.send(data)
   })
 })
+
+//select * from missions where user_id = $1 and category = $2
+//COALESCE(((select json_agg(url) from photos where answer_id = answers.id)), '[]'::json) as photos // how to make empty array if none
+// COALESCE(((select array_agg(ph) from (select id, url from photos where answer_id = answers.id)ph )), '{}') as photos // multiple vars
 
 app.post('/newMission/:id/', (req, res) => {
   const user = req.params.id;
