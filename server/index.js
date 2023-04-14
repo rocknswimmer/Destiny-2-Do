@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('/missions/:id', (req, res) => {
   const user = req.params.id;
-  pool.query('select category, json_agg(row_to_json(missions)) toDos from missions where user_id = $1 group by category', [user], (err, data) => {
+  pool.query('select category, json_agg(row_to_json(missions)) toDos from missions where user_id = $1 and complete = false group by category', [user], (err, data) => {
     if(err) {
       console.log('error retrieving missions')
     }
