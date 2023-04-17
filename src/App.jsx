@@ -24,6 +24,7 @@ function App() {
   // get missions
   const getMissions = () => {
     getUnfinished()
+    getArchive()
   }
 
   const getUnfinished = () => {
