@@ -15,6 +15,7 @@ function App() {
   const [exotic, setExotic] = useState([])
   const [weekly, setWeekly] = useState([])
   const [other, setOther] = useState([])
+  const [archive, setarchive] = useState([])
   const [addingNew, setAddingNew] = useState(false)
   const [mission, setMission] = useState('')
   const [category, setCategory] = useState('')
@@ -22,6 +23,10 @@ function App() {
 
   // get missions
   const getMissions = () => {
+    getUnfinished()
+  }
+
+  const getUnfinished = () => {
     axios.get(`/missions/${userID}`)
       .then((res) => {
         // console.log(res.data.rows)
@@ -48,6 +53,10 @@ function App() {
       .catch((err) => {
         console.log('error getting missions from server')
       })
+  }
+
+  const getArchive = () => {
+    console.log('add axios and everything in index')
   }
 
   //useEffect to set state of missions on load
@@ -88,30 +97,36 @@ function App() {
     <div>
       {/* <button onClick={() => {console.log('exotic:', exotic, 'weekly: ', weekly, 'Story: ', story, 'Other: ', other)}}>sanity check</button> */}
       <h1>Destiny 2 Do</h1>
-      <Accordion
+      {weekly.length > 0 && <Accordion
         title={"Weekly"}
         content={
-          <Feed list={weekly} update={() => {getMissions()}}/>
+          <Feed list={weekly} update={() => {getMissions()}} archive={false}/>
         }
-      />
-      <Accordion
+      />}
+      {exotic.length > 0 && <Accordion
         title={"Exotic"}
         content={
-          <Feed list={exotic} update={() => {getMissions()}}/>
+          <Feed list={exotic} update={() => {getMissions()}}  archive={false}/>
         }
-      />
-      <Accordion
+      />}
+      {story.length > 0 && <Accordion
         title={"Story"}
         content={
-          <Feed list={story} update={() => {getMissions()}}/>
+          <Feed list={story} update={() => {getMissions()}} archive={false}/>
         }
-      />
-      <Accordion
+      />}
+      {other.length > 0 && <Accordion
         title={"End Game / Other"}
         content={
-          <Feed list={other} update={() => {getMissions()}}/>
+          <Feed list={other} update={() => {getMissions()}} archive={false}/>
         }
-      />
+      />}
+      {archive.length > 0 && <Accordion
+        title={"End Game / Other"}
+        content={
+          <Feed list={archive} update={() => {getMissions()}} archive={true}/>
+        }
+      />}
       <button onClick={openForm}>Create New Mission</button>
       {addingNew && <Modal
       close={() => {openForm()}}
