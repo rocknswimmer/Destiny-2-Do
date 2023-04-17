@@ -29,9 +29,15 @@ app.get('/missions/:id', (req, res) => {
   })
 })
 
-//select * from missions where user_id = $1 and category = $2
-//COALESCE(((select json_agg(url) from photos where answer_id = answers.id)), '[]'::json) as photos // how to make empty array if none
-// COALESCE(((select array_agg(ph) from (select id, url from photos where answer_id = answers.id)ph )), '{}') as photos // multiple vars
+app.get('/archive/:id', (req, res) => {
+  const user = req.params.id;
+  pool.query("select * from missions where user_id = $1 and complete = true", [user], (err, data) => {
+    if(err) {
+      console.log('error retrieving archived missions')
+    }
+    res.send(data)
+  })
+})
 
 app.post('/newMission/:id/', (req, res) => {
   const user = req.params.id;

@@ -15,7 +15,7 @@ function App() {
   const [exotic, setExotic] = useState([])
   const [weekly, setWeekly] = useState([])
   const [other, setOther] = useState([])
-  const [archive, setarchive] = useState([])
+  const [archive, setArchive] = useState([])
   const [addingNew, setAddingNew] = useState(false)
   const [mission, setMission] = useState('')
   const [category, setCategory] = useState('')
@@ -57,7 +57,13 @@ function App() {
   }
 
   const getArchive = () => {
-    console.log('add axios and everything in index')
+    axios.get(`/archive/${userID}`)
+      .then((res) => {
+        setArchive(res.data.rows)
+      })
+      .catch((err) => {
+        console.log('error retreiving archived missions')
+      })
   }
 
   //useEffect to set state of missions on load
@@ -123,7 +129,7 @@ function App() {
         }
       />}
       {archive.length > 0 && <Accordion
-        title={"End Game / Other"}
+        title={"Archived Missions"}
         content={
           <Feed list={archive} update={() => {getMissions()}} archive={true}/>
         }
