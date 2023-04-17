@@ -32,24 +32,45 @@ function App() {
       .then((res) => {
         // console.log(res.data.rows)
         let categories = res.data.rows
+        var exoticsFound = false
+        var weeklyFound = false
+        var storyFound = false
+        var otherFound = false
 
         for(let i = 0; i < categories.length; i++) {
           if(categories[i].category === 'exotic'){
             // console.log('array?: ', categories[i].todos, Array.isArray(categories[i].todos))
             setExotic(categories[i].todos)
+            exoticsFound = true
           }
           if(categories[i].category === 'weekly'){
             setWeekly(categories[i].todos)
+            weeklyFound = true
           }
           if(categories[i].category === 'story'){
             setStory(categories[i].todos)
+             storyFound = true
           }
           if(categories[i].category === 'other') {
             setOther(categories[i].todos)
+            otherFound = true
           }
 
         }
-        //got through rows which should be missions by category and set each mission list
+
+        if(!exoticsFound){
+          setExotic([])
+        }
+        if(!weeklyFound){
+          setWeekly([])
+        }
+        if(!storyFound){
+          setStory([])
+        }
+        if(!otherFound){
+          setOther([])
+        }
+
       })
       .catch((err) => {
         console.log('error getting missions from server')
