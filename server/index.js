@@ -56,6 +56,16 @@ app.put('/complete/:id', (req, res) => {
   })
 })
 
+app.put('/unarchive/:id', (req, res) => {
+  const mission = req.params.id;
+  pool.query('update missions set complete = false where id = $1', [mission], (err, data) => {
+    if(err) {
+      console.log('error unarchiving mission')
+    }
+    res.send('Mission Unarchived')
+  })
+})
+
 app.put('/note/:id', (req, res) => {
   const mission = req.params.id;
   const {note} = req.body;
