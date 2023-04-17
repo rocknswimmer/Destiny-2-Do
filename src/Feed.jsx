@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Accordion from './Accordion.js'
 import axios from 'axios'
+import Modal from './Modal.js'
 
 function Feed({list}) {
 
@@ -8,9 +9,10 @@ function Feed({list}) {
 
   return (
     <div>
-      {list.map((toDo) => {
+      {list.map((toDo, i) => {
         return <Accordion
-        title={toDo.task}
+        key={i}
+        title={toDo.mission}
         content={
           <div>
             <p>note to go here in a text field with conditions?</p>
