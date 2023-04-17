@@ -91,25 +91,25 @@ function App() {
       <Accordion
         title={"Weekly"}
         content={
-          <Feed list={weekly}/>
+          <Feed list={weekly} update={() => {getMissions()}}/>
         }
       />
       <Accordion
         title={"Exotic"}
         content={
-          <Feed list={exotic}/>
+          <Feed list={exotic} update={() => {getMissions()}}/>
         }
       />
       <Accordion
         title={"Story"}
         content={
-          <Feed list={story}/>
+          <Feed list={story} update={() => {getMissions()}}/>
         }
       />
       <Accordion
         title={"End Game / Other"}
         content={
-          <Feed list={other}/>
+          <Feed list={other} update={() => {getMissions()}}/>
         }
       />
       <button onClick={openForm}>Create New Mission</button>

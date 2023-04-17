@@ -3,20 +3,43 @@ import Accordion from './Accordion.js'
 import axios from 'axios'
 import Modal from './Modal.js'
 
-function Feed({list}) {
+function Feed({list, update}) {
 
+  const [doubleCheck, setDoubleCheck] = useState(false)
   // put functions for add note and mark complete, consider an edit mission function
+  const checkComplete = () => {
+    setDoubleCheck(!doubleCheck)
+  }
+  const markComplete = (mission) => {
+    //console.log('successful double check')
+    axios.put(`/complete/${mission}`)
+      .then((res) => {
+        update()
+        checkComplete()
+      })
+      .catch((err) => {
+        console.log('error marking mission complete')
+      })
+    //get missions
+  }
 
   return (
     <div>
-      {list.map((toDo, i) => {
+      {list.length === 0 && <div>All Missions Complete</div>}
+      {list.length > 0 && list.map((toDo, i) => {
         return <Accordion
         key={i}
         title={toDo.mission}
         content={
           <div>
             <p>note to go here in a text field with conditions?</p>
-            <button>edit note</button> <button>mark complete/mabye make check box?</button>
+            <button>edit note</button> <button onClick={checkComplete}>Mission Complete</button>
+            {doubleCheck && <Modal  close={() => {checkComplete()}} content={
+              <div>
+                <h3>You Have Completed This mission?</h3>
+                <button onClick={() => {markComplete(toDo.id)}}>Yes</button>
+              </div>
+            } />}
           </div>
         }
         />
