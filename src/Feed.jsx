@@ -8,7 +8,7 @@ function Feed({list, update, archive, userID}) {
   const [doubleCheck, setDoubleCheck] = useState(false)
   const [reset, setReset] = useState(false)
   const [note, setNote] = useState('')
-  const approved = '0123456789abcdefghijklmnopqrstuvwxyz /.,:?!-'.split('')
+  const approved = '0123456789abcdefghijklmnopqrstuvwxyz /.,:?!-ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
   // put functions for add note and mark complete, consider an edit mission function
   const checkComplete = () => {
     setDoubleCheck(!doubleCheck)

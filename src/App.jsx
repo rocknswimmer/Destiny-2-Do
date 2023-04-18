@@ -19,7 +19,7 @@ function App() {
   const [addingNew, setAddingNew] = useState(false)
   const [mission, setMission] = useState('')
   const [category, setCategory] = useState('')
-  const approved = '0123456789abcdefghijklmnopqrstuvwxyz /.,:?!-'.split('')
+  const approved = '0123456789abcdefghijklmnopqrstuvwxyz /.,:?!-ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
 
   // get missions
   const getMissions = () => {
