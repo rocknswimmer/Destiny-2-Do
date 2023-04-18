@@ -82,7 +82,7 @@ function Feed({list, update, archive, userID}) {
     <div className="feed">
       {archive && <button onClick={checkReset} className="reset">Weekly Reset</button>}
       {reset && <Modal close={() => {checkReset()}} content={
-        <div>
+        <div className="form">
           <h3>Reset The Weekly Missions?</h3>
           <button onClick={weeklyReset}>Yes</button>
         </div>
