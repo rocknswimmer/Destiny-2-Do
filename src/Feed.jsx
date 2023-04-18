@@ -53,14 +53,35 @@ function Feed({list, update, archive, userID}) {
 
   const editNote = (e) => {
     //do input check here before state set?
+    let clientInput = e.target.value.split('')
+
+    if(clientInput.every((char) => {return approved.indexOf(char) !== -1})) {
+      setNote(e.target.value)
+    } else {
+      alert(`note can only contain approved values, which are ${approved}`)
+    }
+
   }
 
   const updateNote = (mission) => {
-
+    axios.put(`/note/${mission}`, {note: note})
+      .then((res) => {
+        update()
+      })
+      .catch((err) => {
+        console.log('error updating note')
+      })
   }
 
   return (
     <div>
+      {archive && <button onClick={checkReset}>Weekly Reset</button>}
+      {reset && <Modal close={() => {checkReset()}} content={
+        <div>
+          <h3>Reset The Weekly Missions?</h3>
+          <button onClick={weeklyReset}>Yes</button>
+        </div>
+      }/>}
       {list.length === 0 && <div>All Missions Complete</div>}
       {list.length > 0 && list.map((toDo, i) => {
         return <Accordion
@@ -68,9 +89,9 @@ function Feed({list, update, archive, userID}) {
         title={toDo.mission}
         content={
           <div>
-            {(toDo.note !== null) && <textarea defaultValue={toDo.note}></textarea>}
-            {(toDo.note === null) && <textarea placeholder="Add a note about the mission, like location or next step"></textarea>}
-            <button>edit note</button>
+            {(toDo.note !== null) && <textarea defaultValue={toDo.note} onChange={editNote}></textarea>}
+            {(toDo.note === null) && <textarea placeholder="Add a note about the mission, like location or next step" onChange={editNote}></textarea>}
+            <button onClick={() => {updateNote(toDo.id)}}>edit note</button>
             {!archive && <button onClick={checkComplete}>Mission Complete</button>}
             {archive && <button onClick={checkComplete}>Unarchive Mission</button>}
             {doubleCheck && <Modal  close={() => {checkComplete()}} content={
@@ -89,13 +110,6 @@ function Feed({list, update, archive, userID}) {
         }
         />
       })}
-      {archive && <button onClick={checkReset}>Weekly Reset</button>}
-      {reset && <Modal close={() => {checkReset()}} content={
-        <div>
-          <h3>Reset The Weekly Missions?</h3>
-          <button onClick={weeklyReset}>Yes</button>
-        </div>
-      }/>}
     </div>
   )
 }
