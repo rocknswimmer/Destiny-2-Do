@@ -128,31 +128,31 @@ function App() {
       {weekly.length > 0 && <Accordion
         title={"Weekly"}
         content={
-          <Feed list={weekly} update={() => {getMissions()}} archive={false}/>
+          <Feed list={weekly} update={() => {getMissions()}} archive={false} userID={userID}/>
         }
       />}
       {exotic.length > 0 && <Accordion
         title={"Exotic"}
         content={
-          <Feed list={exotic} update={() => {getMissions()}}  archive={false}/>
+          <Feed list={exotic} update={() => {getMissions()}}  archive={false} userID={userID}/>
         }
       />}
       {story.length > 0 && <Accordion
         title={"Story"}
         content={
-          <Feed list={story} update={() => {getMissions()}} archive={false}/>
+          <Feed list={story} update={() => {getMissions()}} archive={false} userID={userID}/>
         }
       />}
       {other.length > 0 && <Accordion
         title={"End Game / Other"}
         content={
-          <Feed list={other} update={() => {getMissions()}} archive={false}/>
+          <Feed list={other} update={() => {getMissions()}} archive={false} userID={userID}/>
         }
       />}
       {archive.length > 0 && <Accordion
         title={"Archived Missions"}
         content={
-          <Feed list={archive} update={() => {getMissions()}} archive={true}/>
+          <Feed list={archive} update={() => {getMissions()}} archive={true} userID={userID}/>
         }
       />}
       <button onClick={openForm}>Create New Mission</button>

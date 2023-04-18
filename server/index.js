@@ -85,5 +85,16 @@ app.put('/note/:id', (req, res) => {
   })
 })
 
+app.put('/weeklyReset/:id', (req, res) => {
+  const user = req.params.id
+
+  pool.query('update missions set complete = false where user_id = $1 and category = $2', [user, 'weekly'], (err, data) => {
+    if(err){
+      console.log('error performing weekly reset')
+    }
+    res.send('Weekly Missions Reset')
+  })
+})
+
 app.listen(3009);
 console.log('Listening on port 3009');

@@ -3,9 +3,10 @@ import Accordion from './Accordion.js'
 import axios from 'axios'
 import Modal from './Modal.js'
 
-function Feed({list, update, archive}) {
+function Feed({list, update, archive, userID}) {
 
   const [doubleCheck, setDoubleCheck] = useState(false)
+  const [reset, setReset] = useState(false)
   // put functions for add note and mark complete, consider an edit mission function
   const checkComplete = () => {
     setDoubleCheck(!doubleCheck)
@@ -31,6 +32,20 @@ function Feed({list, update, archive}) {
       })
       .catch((err) => {
         console.log('error unarchiving mission')
+      })
+  }
+
+  const checkReset = () => {
+    setReset(!reset)
+  }
+  const weeklyReset = () => {
+    axios.put(`/weeklyReset/${userID}`)
+      .then((res) => {
+        update()
+        checkReset()
+      })
+      .catch((err) => {
+        console.log('error resetting weekly missions')
       })
   }
 
@@ -63,6 +78,13 @@ function Feed({list, update, archive}) {
         }
         />
       })}
+      {archive && <button onClick={checkReset}>Weekly Reset</button>}
+      {reset && <Modal close={() => {checkReset()}} content={
+        <div>
+          <h3>Reset The Weekly Missions?</h3>
+          <button onClick={weeklyReset}>Yes</button>
+        </div>
+      }/>}
     </div>
   )
 }
