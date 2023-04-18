@@ -101,12 +101,12 @@ function Feed({list, update, archive, userID}) {
             {!archive && <button onClick={checkComplete}>Mission Complete</button>}
             {archive && <button onClick={checkComplete}>Unarchive Mission</button>}
             {doubleCheck && <Modal  close={() => {checkComplete()}} content={
-              <div>
-                {!archive && <div>
+              <div className="form">
+                {!archive && <div className="form">
                 <h3>You Have Completed This mission?</h3>
                 <button onClick={() => {markComplete(toDo.id)}}>Yes</button>
                 </div>}
-                {archive && <div>
+                {archive && <div className="form">
                 <h3>You Want To Unarchive This mission?</h3>
                 <button onClick={() => {unarchive(toDo.id)}}>Yes</button>
                 </div>}

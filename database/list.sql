@@ -21,11 +21,42 @@ CREATE TABLE missions (
 
 insert into guardians (user_name) values ('andyTest') returning *;
 
-insert into missions (mission, category, user_id) values ('Vex Calibur/not mission title', 'exotic', 1);
+insert into missions (mission, category, user_id) values ('Vex Calibur', 'exotic', 1);
 
+insert into missions (mission, category, user_id) values ('Witch Queen', 'story', 1);
 insert into missions (mission, category, user_id) values ('Beyond Light', 'story', 1);
+insert into missions (mission, category, user_id) values ('Forsaken', 'story', 1);
 
-insert into missions (mission, category, user_id) values ('Place for vaiour endgame', 'other', 1);
+insert into missions (mission, category, user_id) values ('Queens Guard', 'other', 1);
+insert into missions (mission, category, user_id) values ('Neomuna Archive Monuments', 'other', 1);
+insert into missions (mission, category, user_id) values ('Weapon Crafting Intro', 'other', 1);
 
-insert into missions (mission, category, user_id) values ('Crucible Pin', 'weekly', 1);
-insert into missions (mission, category, user_id) values ('NightFall', 'weekly', 1);
+insert into missions (mission, category, user_id) values ('Crucible Pinnacle', 'weekly', 1);
+insert into missions (mission, category, user_id) values ('Crucible Pinnacle (Trials or Iron)', 'weekly', 1);
+insert into missions (mission, category, user_id) values ('Crucible Bounties Powerful', 'weekly', 1);
+
+insert into missions (mission, category, user_id) values ('NightFall Pinnacle', 'weekly', 1);
+insert into missions (mission, category, user_id) values ('Strike Playlist Pinnacle', 'weekly', 1);
+insert into missions (mission, category, user_id) values ('Vanguard Bounties Powerful', 'weekly', 1);
+insert into missions (mission, category, user_id) values ('Story Mission Pinnacle', 'weekly', 1);
+
+insert into missions (mission, category, user_id) values ('Defiant Battlegrounds Pinnacle', 'weekly', 1);
+insert into missions (mission, category, user_id) values ('Defiant Battlegrounds Legendary Pinnacle', 'weekly', 1);
+insert into missions (mission, category, user_id) values ('War Table Bounties Pinnacle', 'weekly', 1);
+insert into missions (mission, category, user_id) values ('Defiant Battlegrounds Powerful, tier 2 ', 'weekly', 1);
+insert into missions (mission, category, user_id) values ('Defiant Battlegrounds Powerful, tier 3 ', 'weekly', 1);
+
+insert into missions (mission, category, user_id) values ('Gunsmith Boutnies Powerful', 'weekly', 1);
+insert into missions (mission, category, user_id) values ('Commendations Powerful', 'weekly', 1);
+
+insert into missions (mission, category, user_id) values ('Gambit Pinnacle', 'weekly', 1);
+insert into missions (mission, category, user_id) values ('Gambit Bounties Powerful', 'weekly', 1);
+
+insert into missions (mission, category, user_id) values ('Dares Pinnacle', 'weekly', 1);
+insert into missions (mission, category, user_id) values ('Dares Powerful, playlist ', 'weekly', 1);
+
+insert into missions (mission, category, user_id) values ('Current Raid Pinnacle', 'weekly', 1);
+insert into missions (mission, category, user_id) values ('Weekly Raid Pinnacle', 'weekly', 1);
+
+insert into missions (mission, category, user_id) values ('Current Dungeon Pinnacle', 'weekly', 1);
+insert into missions (mission, category, user_id) values ('Weekly Dungeon Pinnacle', 'weekly', 1);

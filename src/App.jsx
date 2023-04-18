@@ -164,13 +164,16 @@ function App() {
       {addingNew && <Modal
       close={() => {openForm()}}
       content={
-        <div>
-          <form onSubmit={submitMission}>
-            <h1>Create A New Mission!</h1>
-            <div>
+        <div className="modal-content">
+          <h1 className="create">Create A New Mission!</h1>
+          <form onSubmit={submitMission} className="form">
+
+            <div className="mission">
             <label>Mission Name:</label>
+            <div>
             <input type="text" placeholder="i.e. Get Exotic" onChange={missionValue}></input>
             <span>{`${mission.length}/60`}</span>
+            </div>
             </div>
             <label>Mission Category:</label>
             <select onChange={categoryValue}>
@@ -180,7 +183,7 @@ function App() {
               <option value={'story'}>Story</option>
               <option value={'other'}>Other/End Game</option>
             </select>
-            <button type="submit">Create Mission</button>
+            <button type="submit" className="new">Create Mission</button>
           </form>
         </div>
       }
