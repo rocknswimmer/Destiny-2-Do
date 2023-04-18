@@ -2,13 +2,13 @@ import React from 'react';
 import {useState} from 'react';
 
 
-const Accordion = ({title, content}) => {
+const Accordion = ({title, content, category}) => {
   const [isActive, setIsActive] = useState(false);
 
   return (
     <React.Fragment>
-      <div className="accordion-item">
-        <div className="accordion-title" onClick={() => setIsActive(!isActive)}>
+      <div className={`accordion-item-${category}`}>
+        <div className={`accordion-title-${category}`} onClick={() => setIsActive(!isActive)}>
           <div>{title}</div>
           <div>{isActive ? '-' : '+'}</div>
         </div>

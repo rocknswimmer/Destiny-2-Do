@@ -64,18 +64,23 @@ function Feed({list, update, archive, userID}) {
   }
 
   const updateNote = (mission) => {
-    axios.put(`/note/${mission}`, {note: note})
+    if(note.length > 0) {
+      axios.put(`/note/${mission}`, {note: note})
       .then((res) => {
         update()
       })
       .catch((err) => {
         console.log('error updating note')
       })
+    } else {
+      alert('note empty or contains values you cannot use')
+    }
+
   }
 
   return (
-    <div>
-      {archive && <button onClick={checkReset}>Weekly Reset</button>}
+    <div className="feed">
+      {archive && <button onClick={checkReset} className="reset">Weekly Reset</button>}
       {reset && <Modal close={() => {checkReset()}} content={
         <div>
           <h3>Reset The Weekly Missions?</h3>
@@ -85,10 +90,11 @@ function Feed({list, update, archive, userID}) {
       {list.length === 0 && <div>All Missions Complete</div>}
       {list.length > 0 && list.map((toDo, i) => {
         return <Accordion
+        category={toDo.category}
         key={i}
         title={toDo.mission}
         content={
-          <div>
+          <div className="inner-content">
             {(toDo.note !== null) && <textarea defaultValue={toDo.note} onChange={editNote}></textarea>}
             {(toDo.note === null) && <textarea placeholder="Add a note about the mission, like location or next step" onChange={editNote}></textarea>}
             <button onClick={() => {updateNote(toDo.id)}}>edit note</button>

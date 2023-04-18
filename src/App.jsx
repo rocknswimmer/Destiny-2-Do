@@ -122,38 +122,43 @@ function App() {
   }
 
   return (
-    <div>
+    <div id="app">
       {/* <button onClick={() => {console.log('exotic:', exotic, 'weekly: ', weekly, 'Story: ', story, 'Other: ', other)}}>sanity check</button> */}
       <h1>Destiny 2 Do</h1>
       {weekly.length > 0 && <Accordion
         title={"Weekly"}
         content={
-          <Feed list={weekly} update={() => {getMissions()}} archive={false} userID={userID}/>
+          <Feed list={weekly} update={() => {getMissions()}} archive={false} userID={userID} />
         }
+        category={'weekly'}
       />}
       {exotic.length > 0 && <Accordion
         title={"Exotic"}
         content={
-          <Feed list={exotic} update={() => {getMissions()}}  archive={false} userID={userID}/>
+          <Feed list={exotic} update={() => {getMissions()}}  archive={false} userID={userID} />
         }
+        category={'exotic'}
       />}
       {story.length > 0 && <Accordion
         title={"Story"}
         content={
-          <Feed list={story} update={() => {getMissions()}} archive={false} userID={userID}/>
+          <Feed list={story} update={() => {getMissions()}} archive={false} userID={userID} />
         }
+        category={'story'}
       />}
       {other.length > 0 && <Accordion
         title={"End Game / Other"}
         content={
-          <Feed list={other} update={() => {getMissions()}} archive={false} userID={userID}/>
+          <Feed list={other} update={() => {getMissions()}} archive={false} userID={userID} />
         }
+        category={'other'}
       />}
       {archive.length > 0 && <Accordion
         title={"Archived Missions"}
         content={
-          <Feed list={archive} update={() => {getMissions()}} archive={true} userID={userID}/>
+          <Feed list={archive} update={() => {getMissions()}} archive={true} userID={userID} />
         }
+        category={'archive'}
       />}
       <button onClick={openForm}>Create New Mission</button>
       {addingNew && <Modal

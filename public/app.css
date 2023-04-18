@@ -1,17 +1,109 @@
-.accordion-title {
+.accordion-title-weekly {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: #fb3b0b;
+  color: rgb(254, 253, 253);
+  border: solid black 1px;
+  padding-left: 5px;
+}
+
+.accordion-item-weekly {
+  width: 95%;
+  background-color: hsl(12, 88%, 73%);
+  color: black;
+
+  margin: 25px;
+}
+
+.accordion-title-exotic {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: hsl(50, 100%, 51%);
+  color: rgb(0, 0, 0);
+  border: solid black 1px;
+  padding-left: 5px;
+}
+
+.accordion-item-exotic {
+  width: 95%;
+  background-color: hsl(50, 86%, 74%);
+  color: black;
+
+  margin: 25px;
+}
+.accordion-title-story {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: #18ce00;
+  color: rgb(254, 253, 253);
+  border: solid black 1px;
+  padding-left: 5px;
+}
+
+.accordion-item-story {
+  width: 95%;
+  background-color: #83db77;
+  color: black;
+
+  margin: 25px;
+}
+.accordion-title-other {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: #5e12d8;
+  color: rgb(254, 253, 253);
+  border: solid black 1px;
+  padding-left: 5px;
+}
+
+.accordion-item-other {
+  width: 95%;
+  background-color: #9671d0;
+  color: black;
+
+  margin: 25px;
+}
+.accordion-title-archive {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   background-color: #126ed8;
   color: rgb(254, 253, 253);
+  border: solid black 1px;
+  padding-left: 5px;
 }
 
-.accordion-item {
-  max-width: 80vw;
-  min-width: 50vw;
+.accordion-item-archive {
+  width: 95%;
   background-color: #46e8fa;
   color: black;
 
   margin: 25px;
+}
+
+.accordion-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid black 1px;
+}
+
+.inner-content {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.feed {
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .modal {
@@ -56,4 +148,32 @@
   margin-bottom: 10px;
   display: flex;
   justify-content: flex-end;
+}
+
+body {
+  background-color: black;
+  color: azure;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.reset {
+  background-color: red;
+  margin-top: 10px;
+}
+
+textarea {
+  width: inherit;
+  height: 10em;
+  margin: 10px;
+  background-color: black;
+  color: azure;
+}
+
+button {
+  margin: 5px;
 }
