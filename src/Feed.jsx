@@ -7,6 +7,8 @@ function Feed({list, update, archive, userID}) {
 
   const [doubleCheck, setDoubleCheck] = useState(false)
   const [reset, setReset] = useState(false)
+  const [note, setNote] = useState('')
+  const approved = '0123456789abcdefghijklmnopqrstuvwxyz /.,:?!-'.split('')
   // put functions for add note and mark complete, consider an edit mission function
   const checkComplete = () => {
     setDoubleCheck(!doubleCheck)
@@ -49,6 +51,14 @@ function Feed({list, update, archive, userID}) {
       })
   }
 
+  const editNote = (e) => {
+    //do input check here before state set?
+  }
+
+  const updateNote = (mission) => {
+
+  }
+
   return (
     <div>
       {list.length === 0 && <div>All Missions Complete</div>}
@@ -58,7 +68,8 @@ function Feed({list, update, archive, userID}) {
         title={toDo.mission}
         content={
           <div>
-            <p>note to go here in a text field with conditions?</p>
+            {(toDo.note !== null) && <textarea defaultValue={toDo.note}></textarea>}
+            {(toDo.note === null) && <textarea placeholder="Add a note about the mission, like location or next step"></textarea>}
             <button>edit note</button>
             {!archive && <button onClick={checkComplete}>Mission Complete</button>}
             {archive && <button onClick={checkComplete}>Unarchive Mission</button>}
