@@ -25,7 +25,7 @@ insert into missions (mission, category, user_id) values ('Vex Calibur', 'exotic
 
 insert into missions (mission, category, user_id) values ('Witch Queen', 'story', 1);
 insert into missions (mission, category, user_id) values ('Beyond Light', 'story', 1);
-insert into missions (mission, category, user_id) values ('Forsaken', 'story', 1);
+insert into missions (mission, category, user_id) values ('Shadow keep', 'story', 1);
 
 insert into missions (mission, category, user_id) values ('Queens Guard', 'other', 1);
 insert into missions (mission, category, user_id) values ('Neomuna Archive Monuments', 'other', 1);
