@@ -5,3 +5,4 @@ Had the idea to put together an editable list of activities to complete in desti
 
 Improvements from beta testers:
 forgot about case sensitivity, so hot patched a solution
+
